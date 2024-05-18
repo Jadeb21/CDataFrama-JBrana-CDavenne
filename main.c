@@ -9,7 +9,7 @@ int main() {
     // Saisie en dur (initialisation)
     hardware_cdataframe(cdata);
 
-    printf("Dataframe initialise avec des valeurs en dur:\n");
+    printf("CDataframe initialise avec des valeurs en dur:\n");
     print_cdataframe(cdata);
 
 

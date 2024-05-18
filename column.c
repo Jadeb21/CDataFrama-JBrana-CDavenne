@@ -34,11 +34,12 @@ int insert_value(COLUMN* column, int value) {
 
 //Fonction permettant de supprimer une colonne et de libérer de l'espace mémoire
 void delete_column(COLUMN **col) {
-    if (*col == NULL) return;
+    if (*col == NULL){
     free((*col)->title);
     free((*col)->tab);
     free(*col);
     *col = NULL;
+    }
 }
 
 //Fonction permettant d'afficher proprement les colonnes avec le titre de la colonne
