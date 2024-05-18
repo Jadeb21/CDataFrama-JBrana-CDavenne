@@ -16,10 +16,11 @@ CDATAFRAME *create_cdataframe(){
     return cdata;
 
 }
+
+//Initialisation du cdataframe en saisie utilisateur
 int input_user(CDATAFRAME* cdata, COLUMN* col){
     char title[100];
     int value;
-    int T;
     int choix;
     do {
         printf("Entrer le titre de la colonne:\n");
@@ -44,6 +45,7 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
 
 }
 
+//Initialisation du cdataframe en dur
 void hardware_cdataframe(CDATAFRAME* cdata) {
     // Création de colonnes avec des valeurs initiales
     COLUMN *col1 = create_column("Colonne 1");
@@ -66,7 +68,7 @@ void hardware_cdataframe(CDATAFRAME* cdata) {
     add_row_cdataframe(cdata, new_row_values);
 }
 
-
+//Ajout d'une colonne
 void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
     if (cdata->tp == cdata->tl) {
         cdata->tp += REALLOC_SIZE;
@@ -127,6 +129,7 @@ void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
     cdata->tl++;
 }
 
+//Suppression d'une ligne
 void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
     if (row < 0 || row >= cdata->tl) return;
 
@@ -139,7 +142,7 @@ void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
     cdata->tl--;
 }
 
-
+//Suppression d'une colonne
 void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     if (col_index < 0 || col_index >= cdata->tl) return;
 
@@ -151,20 +154,25 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     cdata->tl--;
 }
 
+//Renommer une colonne du cdataframe
 void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char* new_title) {
     if (col_index < 0 || col_index >= cdata->tl) return;
 
     free(cdata->tab[col_index].title);
     cdata->tab[col_index].title = strdup(new_title);
 }
+
+//chercher s'il existe une valeur donnée
 int exists_value_cdataframe(CDATAFRAME* cdata, int value) {
     for (int i = 0; i < cdata->tl; ++i) {
-        if (count_occurences(&(cdata->tab[i]), value) > 0) {
+        if (count_occurences(&(cdata->tab[i]), value) > 0) { //On utilise le nombre d'occurrence de la fonction column.h pour compter le nombre de fois ou la valeur apparait
             return 1;
         }
     }
     return 0;
 }
+
+//Cherhcer une valeur
 int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) {
     if (col < 0 || col >= cdata->tl || row < 0 || row >= cdata->tab[col].tl) {
         return -1; // ou une autre valeur indicative d'erreur
@@ -172,45 +180,55 @@ int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) {
     return value_position(&(cdata->tab[col]), row);
 }
 
+//Changer la valeur après avoir utiliser get_value_cdataframe
 void set_value_cdataframe(CDATAFRAME* cdata, int row, int col, int value) {
     if (row < 0 || row >= cdata->tab[col].tl || col < 0 || col >= cdata->tl) {
         return;
     }
     cdata->tab[col].tab[row] = value;
 }
+
+//Renvoie le nom des colonnes
 void print_column_names_cdataframe(CDATAFRAME* cdata) {
     for (int i = 0; i < cdata->tl; ++i) {
         printf("%s\n", cdata->tab[i].title);
     }
 }
+
+//Compte le nombre de colonne utiliser
 int get_row_count(CDATAFRAME *cdata) {
     return cdata->tl;
 }
+
+//Montre toute la mémoire
 int get_column_count(CDATAFRAME *cdata) {
     return cdata->tp;
 }
+
+//compte le nombre de valeur egale à une valeur donner
 int count_cells_equal_to(CDATAFRAME* cdata, int x) {
     int count = 0;
     for (int i = 0; i < cdata->tp; ++i) {
-        count += equal_value(&(cdata->tab[i]), x);
+        count += equal_value(&(cdata->tab[i]), x); //Utilisation de equal_value (nous aurions pu utiliser count_occurrence) initialiser en column.h
     }
     return count;
 }
 int count_cells_greater_than(CDATAFRAME* cdata, int x) {
     int count = 0;
     for (int i = 0; i < cdata->tp; ++i) {
-        count += more_value(&(cdata->tab[i]), x);
+        count += more_value(&(cdata->tab[i]), x);//Utilisation de more_value initialiser en column.h
     }
     return count;
 }
 int count_cells_less_than(CDATAFRAME* cdata, int x) {
     int count = 0;
     for (int i = 0; i < cdata->tp; ++i) {
-        count += less_value(&(cdata->tab[i]), x);
+        count += less_value(&(cdata->tab[i]), x);//Utilisation de less_value initialiser en column.h
     }
     return count;
 }
 
+//Menu du cdataframe
 void print_menu() {
     printf("\nMenu:\n");
     printf("1. Ajouter une colonne\n");

@@ -3,7 +3,6 @@
 //
 #include <stdio.h>
 #include <malloc.h>
-#include <string.h>
 #include "column.h"
 #define MALLOC_SIZE 256
 
@@ -94,6 +93,7 @@ int less_value(COLUMN *col, int value) {
 }
 
 //Fonction donnant les valeurs égales à une valeur donnée
+//Fonction équivalente à celle du comptage d'occurence mais sous un autre nom, nous l'avons quand meme utilisé par la suite
 int equal_value(COLUMN *col, int value) {
     int count=0;
     for (int i=0 ;i<col->tl; i++){
