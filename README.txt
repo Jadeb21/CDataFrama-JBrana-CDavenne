@@ -40,7 +40,7 @@ Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pou
 - Renvoyer le nom de toutes les colonnes presentes dans votre cdataframe (13)
 - Quitter votre cdataframe (14)
 
-Des consignes données lors de l'exécution son donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place
+Des consignes données lors de l'exécution sont donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place
 
 -Erreur du projet :
 
