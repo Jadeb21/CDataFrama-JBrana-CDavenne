@@ -39,8 +39,8 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
         } while (value != -1);
     }while(choix == 'o' || choix == 'O');
 
-    printf("voulez-vous entrer une autre valeur ?[O/N]");
-    scanf("%c", &choix);
+    printf("Voulez-vous entrer une autre valeur ?[O/N]\n");
+    scanf("%c ", &choix);
 
 }
 
@@ -77,7 +77,7 @@ void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2){
     for (int i=0; i<cdata->tl; i++)
     {
 
-        printf("ligne %d: ", ligne1+i);
+        printf("ligne %d:\n", ligne1+i);
         for (int j=ligne1-1; j<ligne2; j++)
         {
             COLUMN *col = &cdata->tab[j];
@@ -205,4 +205,17 @@ int count_cells_less_than(CDATAFRAME* cdata, int x) {
         count += less_value(&(cdata->tab[i]), x);
     }
     return count;
+}
+
+void print_menu() {
+    printf("\nMenu:\n");
+    printf("1. Ajouter une colonne\n");
+    printf("2. Ajouter une ligne\n");
+    printf("3. Supprimer une ligne\n");
+    printf("4. Supprimer une colonne\n");
+    printf("5. Renommer une colonne\n");
+    printf("6. Afficher le dataframe\n");
+    printf("7. Vérifier l'existence d'une valeur\n");
+    printf("8. Quitter\n");
+    printf("Choisissez une option:\n");
 }

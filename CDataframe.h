@@ -36,4 +36,5 @@ int count_cells_equal_to(CDATAFRAME* cdata, int x);
 int count_cells_greater_than(CDATAFRAME* cdata, int x);
 int count_cells_less_than(CDATAFRAME* cdata, int x);
 
+void print_menu();
 #endif //PROJET2_0_CDATAFRAME_H
