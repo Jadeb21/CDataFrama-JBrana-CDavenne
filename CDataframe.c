@@ -16,7 +16,7 @@ CDATAFRAME *create_cdataframe(){
     return cdata;
 
 }
-int utilisateur_saisie(CDATAFRAME* cdata, COLUMN* col){
+int input_user(CDATAFRAME* cdata, COLUMN* col){
     char title[100];
     int value;
     int T;
@@ -162,10 +162,10 @@ int exists_value_cdataframe(CDATAFRAME* cdata, int value) {
     return 0;
 }
 int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) {
-    if (row < 0 || row >= cdata->tab[col].tl || col < 0 || col >= cdata->tl) {
+    if (col < 0 || col >= cdata->tl || row < 0 || row >= cdata->tab[col].tl) {
         return -1; // ou une autre valeur indicative d'erreur
     }
-    return cdata->tab[col].tab[row];
+    return value_position(&(cdata->tab[col]), row);
 }
 
 void set_value_cdataframe(CDATAFRAME* cdata, int row, int col, int value) {
