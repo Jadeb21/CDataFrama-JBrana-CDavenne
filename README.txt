@@ -33,7 +33,7 @@ Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pou
 
 -Erreur du projet :
 
-Les fonctionnalités 4 et 5 ne focntionnent pas
+Les fonctionnalités 4 ne fonctionnepas
 
 -Difficultés :
 

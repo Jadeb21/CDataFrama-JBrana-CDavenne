@@ -82,7 +82,7 @@ int main() {
             case 5: {
                 // Renommer une colonne
                 int col;
-                char new_title[100];
+                char new_title[50];
                 printf("Entrez le numéro de la colonne a renommer:\n");
                 if (scanf("%d", &col) != 1 || col <= 0) {
                     printf("Entree invalide.\n");

@@ -144,21 +144,27 @@ void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
 
 //Suppression d'une colonne
 void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
-    if (col_index < 0 || col_index >= cdata->tl) return;
+    if (col_index < 0 || col_index >= cdata->tp) {
+        return;
+    }
 
-    delete_column(&(cdata->tab[col_index]));
+    // Supprimer la colonne spécifiée
+    delete_column((COLUMN **) &(cdata->tab[col_index]));
 
-    for (int i = col_index; i < cdata->tl - 1; ++i) {
+    // Déplacer les colonnes suivantes vers la gauche
+    for (int i = col_index; i < cdata->tp - 1; ++i) {
         cdata->tab[i] = cdata->tab[i + 1];
     }
-    cdata->tl--;
+
+    // Décrémenter la taille logique
+    cdata->tp--;
 }
+
 
 //Renommer une colonne du cdataframe
 void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char* new_title) {
-    if (col_index < 0 || col_index >= cdata->tl) return;
-
-    free(cdata->tab[col_index].title);
+    if (col_index < 0 || col_index >= cdata->tp)
+        free(cdata->tab[col_index].title);
     cdata->tab[col_index].title = strdup(new_title);
 }
 
