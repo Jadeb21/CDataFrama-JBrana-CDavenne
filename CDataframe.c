@@ -44,6 +44,28 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
 
 }
 
+void hardware_cdataframe(CDATAFRAME* cdata) {
+    // Création de colonnes avec des valeurs initiales
+    COLUMN *col1 = create_column("Colonne 1");
+    COLUMN *col2 = create_column("Colonne 2");
+
+    insert_value(col1, 10);
+    insert_value(col1, 20);
+    insert_value(col1, 30);
+
+    insert_value(col2, 40);
+    insert_value(col2, 50);
+    insert_value(col2, 60);
+
+    // Ajout des colonnes au CDATAFRAME
+    add_column_cdataframe(cdata, col1);
+    add_column_cdataframe(cdata, col2);
+
+    // Ajout de lignes avec des valeurs initiales
+    int new_row_values[] = {70, 80};
+    add_row_cdataframe(cdata, new_row_values);
+}
+
 
 void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
     if (cdata->tp == cdata->tl) {
@@ -201,6 +223,7 @@ void print_menu() {
     printf("8. Afficher les premieres lignes voulu\n");
     printf("9. Afficher les premieres colonnes voulu\n");
     printf("10. Afficher la memoire\n");
-    printf("12. Quitter\n");
+    printf("11. Acceder et changer une valeur\n");
+    printf("13. Quitter\n");
     printf("Choisissez une option:\n");
 }

@@ -29,14 +29,14 @@ pour plus d'information, merci de consulté la partie "Erreur du projet" présen
 
 Appuyer sur le bouton vert (run) en haut
 Un menu se déroule vous demandant si vous préférez saisir manuellement ou si vous préférez quelque chose de déjà rempli
-Ensuite nous vous avons concocter tout un tas de fonctionnalité à utilisé pour que vous puissiez faire ce que vous souhaitez
+Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pour que vous puissiez faire ce que vous souhaitez
 
 -Erreur du projet :
 
-
+Les fonctionnalités 4 et 5 ne focntionnent pas
 
 -Difficultés :
 
-Tout d'abord, nous n'avons pas bien  compris le sujet et avons du recommencer toute la partie CDataframe.c.
+Tout d'abord, nous n'avons pas bien compris le sujet et avons du recommencer toute la partie CDataframe.c.
 A cause de cette erreur nous n'avons pas pu avancer beaucoup dans le projet.
 La partie la plus dur du projet était justement le cdataframe.
