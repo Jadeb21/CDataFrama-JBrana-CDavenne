@@ -1,0 +1,3 @@
+C:/Users/jadeb/CLionProjects/projet2.0/cmake-build-debug/CMakeFiles/projet2_0.dir
+C:/Users/jadeb/CLionProjects/projet2.0/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/jadeb/CLionProjects/projet2.0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
