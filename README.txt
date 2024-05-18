@@ -22,14 +22,25 @@ Comme il n'exite pas d'équivalent en langage C, nous avons réalisé ce projet 
 Vous pouvez choisir entre un CDataframe déjà rempli ou vous pouvez le remplir vous meme.
 Ensuite vous pourrez choisir entre afficher tout le cdataframe, afficher certaine ligne ou bien certaine colonne du CDataframe
 D'autres fonctionnalités existes comme l'ajout et la suppression de ligne ou de colonne.
-Toutes nos fonctionnalités marchent indépendamment mais certaine ne peuvent pas etre cumulé :
-pour plus d'information, merci de consulté la partie "Erreur du projet" présente en bas de la page.
 
 - Instructions d'exécution de notre code :
 
-Appuyer sur le bouton vert (run) en haut
-Un menu se déroule vous demandant si vous préférez saisir manuellement ou si vous préférez quelque chose de déjà rempli
-Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pour que vous puissiez faire ce que vous souhaitez
+Appuyer sur le bouton vert (run) en haut.
+Un menu se déroule vous demandant si vous préférez saisir manuellement ou si vous préférez quelque chose de déjà rempli.
+Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pour que vous puissiez faire ce que vous souhaitez.
+- L'ajout d'une ligne (2) ou d'une colonne (1)
+- La suppression d'une ligne (3) ou d'une colonne (4)
+- Renommer une colonne (5)
+- Afficher tout votre CDataFrame (6)
+- Verifier l'existence d'une valeur (7)
+- Afficher les premieres lignes (8) ou les premiere colonnes (9) que vous voulez
+- Afficher la mémoire de votre cdataframe (10)
+- Acceder à une valeur en tappant sa ligne et sa colonne, puis changer cette valeur à la position donnée (11)
+- Comparaison à partir d'une valeur donnée, savoir combien de valeur son supérieur, égales ou inférieurs à celle-ci dans votre cdataframe (12)
+- Renvoyer le nom de toutes les colonnes presentes dans votre cdataframe (13)
+- Quitter votre cdataframe (14)
+
+Des consignes données lors de l'exécution son donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place
 
 -Erreur du projet :
 
