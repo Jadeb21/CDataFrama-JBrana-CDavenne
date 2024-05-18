@@ -15,7 +15,6 @@ typedef struct {
 }CDATAFRAME;
 
 CDATAFRAME *create_cdataframe();
-int insert_cdataframe_column(CDATAFRAME* cdata, COLUMN* col);
 void print_cdataframe(CDATAFRAME* cdata);
 void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2);
 void print_colonne(CDATAFRAME* cdata, int col1, int col2);

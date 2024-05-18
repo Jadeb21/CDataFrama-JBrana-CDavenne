@@ -28,7 +28,7 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
         do {
             printf("Entrer la valeur de la colonne \"%s\" (Saisir -1 quand vous avez fini): ", title);
             if (scanf("%d", &value) != 1) { // Vérifie si la saisie est un entier
-                printf("Invalid input. Please enter an integer.\n");
+                printf("Entrer invalide, veuillez saisir un autre chiffre.\n");
                 while (getchar() != '\n'); // Vide le tampon d'entrée
                 continue;
             }
@@ -45,25 +45,14 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
 }
 
 
-
-int insert_cdataframe_column(CDATAFRAME* cdata, COLUMN* col) {
-    int* ptr;
-    if (cdata->tp==0){
-        cdata->tab = malloc(REALLOC_SIZE*sizeof(COLUMN));
-        cdata->tp+=REALLOC_SIZE;
-        if (cdata->tp==cdata->tl) {
-            ptr = realloc(cdata->tab, REALLOC_SIZE * sizeof(COLUMN));
-            if (ptr == NULL)
-                return 0;
-            cdata->tab = ptr;
-            cdata->tp += REALLOC_SIZE;
-        }
-        cdata->tab[cdata->tl] = *col;
-        cdata->tl++;
-        return 1;
+void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
+    if (cdata->tp == cdata->tl) {
+        cdata->tp += REALLOC_SIZE;
+        cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
     }
-
+    cdata->tab[cdata->tl++] = *col;
 }
+
 
 //Fonction affiche tout le cdataframe
 void print_cdataframe(CDATAFRAME* cdata){
@@ -128,13 +117,6 @@ void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
     cdata->tl--;
 }
 
-void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
-    if (cdata->tp == cdata->tl) {
-        cdata->tp += REALLOC_SIZE;
-        cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
-    }
-    cdata->tab[cdata->tl++] = *col;
-}
 
 void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     if (col_index < 0 || col_index >= cdata->tl) return;
@@ -179,10 +161,10 @@ void print_column_names_cdataframe(CDATAFRAME* cdata) {
         printf("%s\n", cdata->tab[i].title);
     }
 }
-int get_row_count(CDATAFRAME* cdata) {
+int get_row_count(CDATAFRAME *cdata) {
     return cdata->tl;
 }
-int get_column_count(CDATAFRAME* cdata) {
+int get_column_count(CDATAFRAME *cdata) {
     return cdata->tp;
 }
 int count_cells_equal_to(CDATAFRAME* cdata, int x) {
@@ -215,7 +197,10 @@ void print_menu() {
     printf("4. Supprimer une colonne\n");
     printf("5. Renommer une colonne\n");
     printf("6. Afficher le dataframe\n");
-    printf("7. Vérifier l'existence d'une valeur\n");
-    printf("8. Quitter\n");
+    printf("7. Verifier l'existence d'une valeur\n");
+    printf("8. Afficher les premieres lignes voulu\n");
+    printf("9. Afficher les premieres colonnes voulu\n");
+    printf("10. Afficher la memoire\n");
+    printf("12. Quitter\n");
     printf("Choisissez une option:\n");
 }
