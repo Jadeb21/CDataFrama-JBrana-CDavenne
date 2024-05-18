@@ -33,7 +33,10 @@ Ensuite nous vous avons concocter tout un tas de fonctionnalité à utilisé pou
 
 -Erreur du projet :
 
+
+
 -Difficultés :
 
-Tout d'abord, nous n'avons pas bien  compris le sujet et avons du recommencer toute la partie CDataframe.c
-La partie la plus dur du projet était justement celle-ci.
+Tout d'abord, nous n'avons pas bien  compris le sujet et avons du recommencer toute la partie CDataframe.c.
+A cause de cette erreur nous n'avons pas pu avancer beaucoup dans le projet.
+La partie la plus dur du projet était justement le cdataframe.
