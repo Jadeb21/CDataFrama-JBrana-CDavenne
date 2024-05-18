@@ -6,7 +6,7 @@
 #define PROJET2_0_COLUMN_H
 
 typedef struct {
-    char *title;
+    char *title; //Titre
     int tl; //taille logique
     int tp; //taille physique
     int *tab; //donnée

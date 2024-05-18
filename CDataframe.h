@@ -9,9 +9,9 @@
 #define REALLOC_SIZE 256
 
 typedef struct {
-    COLUMN *tab;
-    int tp;
-    int tl;
+    COLUMN *tab; //Tableau de donnée
+    int tp; //Taille physique
+    int tl; //Taille logique
 }CDATAFRAME;
 
 CDATAFRAME *create_cdataframe();

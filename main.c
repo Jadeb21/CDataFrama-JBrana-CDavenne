@@ -91,7 +91,7 @@ int main() {
                 }
                 printf("Entrez le nouveau titre de la colonne:\n");
                 scanf("%s", new_title);
-                rename_column_cdataframe(cdata, col - 1, new_title);
+                rename_column_cdataframe(cdata, col - 1 , new_title);
                 printf("Colonne %d renommee en '%s'.\n", col, new_title);
                 break;
             }
@@ -162,15 +162,36 @@ int main() {
                 }
                 break;
             }
-            case 13: {
+            case 12: {
+                //Comparaison lors de la saisie d'une valeur (supérieur/inférieur/égale)
+                int x;
+                printf("Entrez une valeur pour les comparaisons : ");
+                scanf("%d", &x);
+                int equal_count = count_cells_equal_to(cdata, x);
+                printf("Nombre de cellules egales a %d : %d\n", x, equal_count);
+                int greater_count = count_cells_greater_than(cdata, x);
+                printf("Nombre de cellules superieures a %d : %d\n", x, greater_count);
+                int less_count = count_cells_less_than(cdata, x);
+                printf("Nombre de cellules inferieures a %d : %d\n", x, less_count);
+                break;
+            }
+            case 13:{
+                printf("Voici le nom des colonnes presentent dans le cdataframe:\n");
+                print_column_names_cdataframe(cdata);
+                break;
+            }
+            case 14: {
                 // Quitter
                 running = 0;
                 printf("Au revoir!\n");
                 break;
             }
             default: {
-                printf("Option invalide. Veuillez reessayer.\n");
-                break;
+                if (scanf("%d", &choice) != 1 || choice <= 0) {
+                    printf("Entree invalide.\n");
+                    while (getchar() != '\n'); // getchar permet de lire un caractère lors d'une saisie clavier, il sécurise notre programmesi l'utilisateur décide de saisir un caractère au lieu d'un entier
+                    break;
+                }
             }
         }
     }

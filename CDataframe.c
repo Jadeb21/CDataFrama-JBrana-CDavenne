@@ -208,21 +208,21 @@ int get_column_count(CDATAFRAME *cdata) {
 //compte le nombre de valeur egale à une valeur donner
 int count_cells_equal_to(CDATAFRAME* cdata, int x) {
     int count = 0;
-    for (int i = 0; i < cdata->tp; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) {
         count += equal_value(&(cdata->tab[i]), x); //Utilisation de equal_value (nous aurions pu utiliser count_occurrence) initialiser en column.h
     }
     return count;
 }
 int count_cells_greater_than(CDATAFRAME* cdata, int x) {
     int count = 0;
-    for (int i = 0; i < cdata->tp; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) {
         count += more_value(&(cdata->tab[i]), x);//Utilisation de more_value initialiser en column.h
     }
     return count;
 }
 int count_cells_less_than(CDATAFRAME* cdata, int x) {
     int count = 0;
-    for (int i = 0; i < cdata->tp; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) {
         count += less_value(&(cdata->tab[i]), x);//Utilisation de less_value initialiser en column.h
     }
     return count;
@@ -242,6 +242,8 @@ void print_menu() {
     printf("9. Afficher les premieres colonnes voulu\n");
     printf("10. Afficher la memoire\n");
     printf("11. Acceder et changer une valeur\n");
-    printf("13. Quitter\n");
+    printf("12. Comparaison a partir d'une valeur donnee\n");
+    printf("13. Renvoyer le nom des colonnes\n");
+    printf("14. Quitter\n");
     printf("Choisissez une option:\n");
 }
