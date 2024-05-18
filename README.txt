@@ -42,12 +42,15 @@ Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pou
 
 Des consignes données lors de l'exécution sont donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place
 
+Merci de bien mettre la console en pleine écran si vous voulez voire les résultats s'afficher ( car comme le menu est assez conséquent, il cache le reste)
+
 -Erreur du projet :
 
-Les fonctionnalités 4 ne fonctionnepas
+Pour la 8 (et 9), si vous dépassez le nombre de ligne (colonne), le programme s'arrete (s'il n'y a pas plus de 5 lignes, ne mettez pas 6)
 
 -Difficultés :
 
 Tout d'abord, nous n'avons pas bien compris le sujet et avons du recommencer toute la partie CDataframe.c.
 A cause de cette erreur nous n'avons pas pu avancer beaucoup dans le projet.
 La partie la plus dur du projet était justement le cdataframe.
+La taille physique et logique, je me trompais à chaque fois et le programme était faux.

@@ -18,7 +18,7 @@ CDATAFRAME *create_cdataframe(){
 }
 
 //Initialisation du cdataframe en saisie utilisateur
-int input_user(CDATAFRAME* cdata, COLUMN* col){
+void input_user(CDATAFRAME* cdata, COLUMN* col){
     char title[100];
     int value;
     int choix;
@@ -27,7 +27,7 @@ int input_user(CDATAFRAME* cdata, COLUMN* col){
         scanf("%50s", title); //permet de saisir 50 caractères maximum, correspondant au mot le plus long du monde en français
         COLUMN* tab = create_column(title);
         do {
-            printf("Entrer la valeur de la colonne \"%s\" (Saisir -1 quand vous avez fini): ", title);
+            printf("Entrer la valeur de la colonne \"%s\" (Saisir -1 quand vous avez fini):\n", title);
             if (scanf("%d", &value) != 1) { // Vérifie si la saisie est un entier
                 printf("Entrer invalide, veuillez saisir un autre chiffre.\n");
                 while (getchar() != '\n'); // Vide le tampon d'entrée
@@ -89,7 +89,6 @@ void print_cdataframe(CDATAFRAME* cdata){
 void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2){
     for (int i=0; i<cdata->tl; i++)
     {
-
         printf("ligne %d:\n", ligne1+i);
         for (int j=ligne1-1; j<ligne2; j++)
         {
@@ -131,9 +130,9 @@ void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
 
 //Suppression d'une ligne
 void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
-    if (row < 0 || row >= cdata->tl) return;
-
-    for (int i = 0; i < cdata->tp; ++i) {
+    if (row < 0 || row >= cdata->tl)
+        return;
+    for (int i = 0; i < cdata->tl; ++i) {
         for (int j = row; j < cdata->tab[i].tl - 1; ++j) {
             cdata->tab[i].tab[j] = cdata->tab[i].tab[j + 1];
         }
@@ -147,8 +146,6 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     if (col_index < 0 || col_index >= cdata->tp) {
         return;
     }
-
-    // Supprimer la colonne spécifiée
     delete_column((COLUMN **) &(cdata->tab[col_index]));
 
     // Déplacer les colonnes suivantes vers la gauche
@@ -178,7 +175,7 @@ int exists_value_cdataframe(CDATAFRAME* cdata, int value) {
     return 0;
 }
 
-//Cherhcer une valeur
+//Chercher une valeur
 int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) {
     if (col < 0 || col >= cdata->tl || row < 0 || row >= cdata->tab[col].tl) {
         return -1; // ou une autre valeur indicative d'erreur
@@ -252,4 +249,13 @@ void print_menu() {
     printf("13. Renvoyer le nom des colonnes\n");
     printf("14. Quitter\n");
     printf("Choisissez une option:\n");
+}
+
+void welcome(){
+    printf("Bonjour et bienvenue dans le CDataframe !\n");
+    printf("Merci de choisir une option:\n");
+    printf("1. Prerempli\n");
+    printf("2. Saisie utilisateur\n");
+    printf("3. Quitter\n");
+    printf("Comment voulez-vous initialiser votre CDataframe ?\n");
 }

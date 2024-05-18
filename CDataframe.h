@@ -19,7 +19,7 @@ void print_cdataframe(CDATAFRAME* cdata);
 void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2);
 void print_colonne(CDATAFRAME* cdata, int col1, int col2);
 void hardware_cdataframe(CDATAFRAME* cdata);
-int input_user(CDATAFRAME* cdata, COLUMN* col);
+void input_user(CDATAFRAME* cdata, COLUMN* col);
 void add_row_cdataframe(CDATAFRAME* cdata, int* values);
 void delete_row_cdataframe(CDATAFRAME* cdata, int row);
 void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col);
@@ -37,4 +37,5 @@ int count_cells_greater_than(CDATAFRAME* cdata, int x);
 int count_cells_less_than(CDATAFRAME* cdata, int x);
 
 void print_menu();
+void welcome();
 #endif //PROJET2_0_CDATAFRAME_H
