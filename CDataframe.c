@@ -136,7 +136,7 @@ void print_cdataframe(CDATAFRAME* cdata){ //Ici pas de return car aucune nous n'
 }
 
 //Fonction affiche les lignes selon votre choix, du cdataframe
-void print_row(CDATAFRAME* cdata, int row1, int row2){
+void print_row(CDATAFRAME* cdata, int row1, int row2){ //Ici pas besoin de return car on demande juste d'afficher les lignes
     for (int i=0; i<cdata->tl; i++) //Parcours le cdataframe
     {
         printf("ligne %d:\n", row1+i);
@@ -165,7 +165,7 @@ void print_column(CDATAFRAME* cdata, int col1, int col2) //Pas de return car nou
 }
 
 // Fonction pour ajouter une ligne de valeurs au CDataframe
-void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
+void add_row_cdataframe(CDATAFRAME* cdata, int* values) { //Pas de return car on ajoute simplement une ligne de valeur et qu'on ne renvoie pas de valeur
     if (cdata->tp == 0 || cdata->tl >= cdata->tp) {
         cdata->tp += REALLOC_SIZE; //Réallocation pour une nouvelle ligne
         cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
@@ -177,7 +177,7 @@ void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
 }
 
 //Suppression d'une ligne
-void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
+void delete_row_cdataframe(CDATAFRAME* cdata, int row) { //Pas de return car on ne renvoie pas de valeur mais on supprime une ligne
     if (row < 0 || row >= cdata->tl)
         return;
     for (int i = 0; i < cdata->tl; ++i) {
@@ -190,7 +190,7 @@ void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
 }
 
 //Suppression d'une colonne
-void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
+void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) { //Pas de return car on ne renvoie pas de valeur mais on supprime une colonne
     if (col_index < 0 || col_index >= cdata->tp) {
         return;
     }
@@ -208,7 +208,7 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
 
 
 //Renommer une colonne du cdataframe
-void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char *new_title) {
+void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char *new_title) { //Pas de return car on renomme juste une colonne et qu'on ne renvoie pas de valeur
     if (col_index < 0 || col_index >= cdata->tl)
         free(cdata->tab[col_index].title);
 
@@ -217,7 +217,7 @@ void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char *new_title)
 }
 
 //chercher s'il existe une valeur donnée
-int exists_value_cdataframe(CDATAFRAME* cdata, int value) {
+int exists_value_cdataframe(CDATAFRAME* cdata, int value) { //on effectue un return ici car on cherche le nombre de fois ou apparait une valeur
     for (int i = 0; i < cdata->tl; ++i) {
         if (count_occurences(&(cdata->tab[i]), value) > 0) { //On utilise le nombre d'occurrence de la fonction column.h pour compter le nombre de fois ou la valeur apparait
             return 1;
@@ -227,15 +227,15 @@ int exists_value_cdataframe(CDATAFRAME* cdata, int value) {
 }
 
 //Chercher une valeur
-int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) {
+int get_value_cdataframe(CDATAFRAME* cdata, int row, int col) { //On effectue un return car on recherche une valeur
     if (col < 0 || col >= cdata->tl || row < 0 || row >= cdata->tab[col].tl) {
         return -1; // ou une autre valeur indicative d'erreur
     }
-    return value_position(&(cdata->tab[col]), row);
+    return value_position(&(cdata->tab[col]), row);//Trouve la position d'une valeur en fonction des lignes et des colonnes
 }
 
 //Changer la valeur après avoir utiliser get_value_cdataframe
-void set_value_cdataframe(CDATAFRAME* cdata, int row, int col, int value) {
+void set_value_cdataframe(CDATAFRAME* cdata, int row, int col, int value) { //On effectue un return car on veut remplacer une valeur par une autre
     if (row < 0 || row >= cdata->tab[col].tl || col < 0 || col >= cdata->tl) {
         return;
     }
