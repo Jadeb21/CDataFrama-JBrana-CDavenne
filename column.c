@@ -109,3 +109,223 @@ int equal_value(COLUMN *col, int value) {
 
 
 
+/* Fonction amélioré : Partie 2 :
+
+COLUMN *create_column(ENUM_TYPE type, char *title) {
+    COLUMN* col = (COLUMN*)malloc(sizeof(COLUMN));
+    col->title = strdup(title); // Allouer et copier le titre
+    col->size = 0;
+    col->max_size = 256;
+    col->column_type = type;
+    col->data = (COL_TYPE**)malloc(col->max_size * sizeof(COL_TYPE*));
+    col->index = (unsigned long long int*)malloc(col->max_size * sizeof(unsigned long long int));
+    return col;
+}
+
+int insert_value(COLUMN *col, void *value) {
+    if (col->size >= col->max_size) {
+        col->max_size *= 2;
+        col->data = (COL_TYPE**)realloc(col->data, col->max_size * sizeof(COL_TYPE*));
+        col->index = (unsigned long long int*)realloc(col->index, col->max_size * sizeof(unsigned long long int));
+    }
+
+    COL_TYPE* new_value = (COL_TYPE*)malloc(sizeof(COL_TYPE));
+    switch (col->column_type) {
+        case UINT:
+            new_value->uint_value = *(unsigned int*)value;
+            break;
+        case INT:
+            new_value->int_value = *(int*)value;
+            break;
+        case CHAR:
+            new_value->char_value = *(char*)value;
+            break;
+        case FLOAT:
+            new_value->float_value = *(float*)value;
+            break;
+        case DOUBLE:
+            new_value->double_value = *(double*)value;
+            break;
+        case STRING:
+            new_value->string_value = strdup((char*)value);
+            break;
+        case STRUCTURE:
+            new_value->struct_value = value; // Assuming structure is already allocated
+            break;
+
+    }
+
+    col->data[col->size] = new_value;
+    col->index[col->size] = col->size;
+    col->size++;
+}
+
+void print_col(COLUMN* col) {
+    if (col == NULL) {
+        printf("Column is NULL.\n");
+        return;
+    }
+
+    printf("Titre de la colonne : %s\n", col->title);
+    printf("Taille logique : %u\n", col->size);
+    printf("Taille physique : %u\n", col->max_size);
+    printf("Type de colonne : %d\n", col->column_type);
+    printf("Donnees :\n");
+
+    for (unsigned int i = 0; i < col->size; i++) {
+        printf("[%llu] : ", col->index[i]);
+        switch (col->column_type) {
+            case UINT:
+                printf("%u\n", col->data[i]->uint_value);
+                break;
+            case INT:
+                printf("%d\n", col->data[i]->int_value);
+                break;
+            case CHAR:
+                printf("%c\n", col->data[i]->char_value);
+                break;
+            case FLOAT:
+                printf("%f\n", col->data[i]->float_value);
+                break;
+            case DOUBLE:
+                printf("%lf\n", col->data[i]->double_value);
+                break;
+            case STRING:
+                printf("%s\n", col->data[i]->string_value);
+                break;
+            case STRUCTURE:
+                printf("Structure\n");
+                break;
+            default:
+                printf("Unknown data type\n");
+                break;
+        }
+    }
+}
+
+void delete_column(COLUMN **col) {
+    if (col == NULL || *col == NULL) {
+        return;
+    }
+
+    // Libérer la mémoire allouée pour les données
+    for (unsigned int i = 0; i < (*col)->size; i++) {
+        if ((*col)->data[i] != NULL) {
+            switch ((*col)->column_type) {
+                case STRING:
+                    free((*col)->data[i]->string_value);
+                    break;
+                case STRUCTURE:
+                    // Si des structures spécifiques sont allouées, elles doivent être libérées ici
+                    break;
+                default:
+                    break;
+            }
+            free((*col)->data[i]);
+        }
+    }
+
+    // Libérer le tableau de données
+    free((*col)->data);
+
+    // Libérer le titre de la colonne
+    free((*col)->title);
+
+    // Libérer la colonne elle-même
+    free(*col);
+    *col = NULL;
+}
+
+
+//
+void convert_value(COLUMN *col, unsigned long long int i, char *str, int size) {
+    // Vérifier les entrées
+    if (col == NULL || str == NULL || size <= 0 || i >= col->size) {
+        return;
+    }
+
+    // Initialiser la chaîne de caractères
+    str[0] = '\0';
+
+    // Sélectionner le type de données
+    switch (col->column_type) {
+        case UINT:
+            snprintf(str, size, "%u", col->data[i]->uint_value);
+            break;
+        case INT:
+            snprintf(str, size, "%d", col->data[i]->int_value);
+            break;
+        case CHAR:
+            snprintf(str, size, "%c", col->data[i]->char_value);
+            break;
+        case FLOAT:
+            snprintf(str, size, "%.2f", col->data[i]->float_value);
+            break;
+        case DOUBLE:
+            snprintf(str, size, "%.2f", col->data[i]->double_value);
+            break;
+        case STRING:
+            snprintf(str, size, "%s", col->data[i]->string_value);
+            break;
+        case STRUCTURE:
+            snprintf(str, size, "La structure n'est pas générée");
+            break;
+        default:
+            snprintf(str, size, "Unknown data type");
+            break;
+    }
+}
+
+//Fonction permettant de compter le nombre de fois ou apparait une valeur
+int count_occurences(COLUMN *col, int value) {
+    int count = 0;
+    for (int i = 0; i < col->size; i++) {
+        if (col->data[i] == value) {
+            count++;
+        }
+    }
+    return count;
+}
+
+//Fonction permettant l'affichage de la position d'une valeur
+int value_position(COLUMN *col, int position) {
+    if (position < 0 || position >= col->size){
+        printf("Position invalide");
+    }
+    return (int) col->data[position];
+}
+
+//Fonction donnant les valeurs les plus haute à partir d'une valeur donnée
+int more_value(COLUMN *col, int value) {
+    int count = 0;
+    for (int i=0; i<col->size; i++){
+        if (col->data[i]>value) {
+            count++;
+        }
+    }
+    return count;
+}
+
+//Fonction donnant les valeurs les plus basses à partir d'une valeur donnée
+int less_value(COLUMN *col, int value) {
+    int count=0;
+    for (int i=0 ;i<col->size; i++){
+        if (col->data[i]<value){
+            count++;
+        }
+    }
+    return count;
+}
+
+//Fonction donnant les valeurs égales à une valeur donnée
+//Fonction équivalente à celle du comptage d'occurence mais sous un autre nom, nous l'avons quand meme utilisé par la suite
+int equal_value(COLUMN *col, int value) {
+    int count=0;
+    for (int i=0 ;i<col->size; i++){
+        if (col->data[i]==value){
+            count++;
+        }
+    }
+    return count;
+}
+*/

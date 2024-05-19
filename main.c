@@ -221,3 +221,26 @@ int main() {
 
     return 0;
 }
+
+/* Main de la partie 2
+COLUMN *mycol = create_column(STRING, "String column");
+    insert_value(mycol, "Lima");
+    insert_value(mycol, "Bravo");
+    insert_value(mycol, "Zulu");
+    insert_value(mycol, "Tango");
+    printf("Column content sorting : \n");
+    print_col(mycol);
+ */
+/* Autre main possible :
+COLUMN *mycol = create_column(INT, "sorted column");
+int a = 52;
+int b = 44;
+int c = 15;
+int d = 18;
+insert_value(mycol, &a);
+insert_value(mycol, &b);
+insert_value(mycol, &c);
+insert_value(mycol, &d);
+printf("Column content sorting : \n");
+print_col(mycol);
+ */
