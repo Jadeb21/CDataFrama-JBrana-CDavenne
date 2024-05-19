@@ -133,11 +133,11 @@ void print_cdataframe(CDATAFRAME* cdata){
 }
 
 //Fonction affiche les lignes selon votre choix, du cdataframe
-void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2){
+void print_row(CDATAFRAME* cdata, int row1, int row2){
     for (int i=0; i<cdata->tl; i++)
     {
-        printf("ligne %d:\n", ligne1+i);
-        for (int j=ligne1-1; j<ligne2; j++)
+        printf("ligne %d:\n", row1+i);
+        for (int j=row1-1; j<row2; j++)
         {
             COLUMN *col = &cdata->tab[j];
             printf("%d ", col->tab[i]);
@@ -147,7 +147,7 @@ void print_ligne(CDATAFRAME* cdata, int ligne1, int ligne2){
 }
 
 //Fonction permettant d'afficher les colonnes choisis du cdataframe
-void print_colonne(CDATAFRAME* cdata, int col1, int col2)
+void print_column(CDATAFRAME* cdata, int col1, int col2)
 {
     for (int i=col1-1; i<col2; i++)
     {
