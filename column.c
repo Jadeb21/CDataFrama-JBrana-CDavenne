@@ -4,7 +4,6 @@
 //C'est grace à ce fichier que notre cdataframe peut contenir différentes colonne
 //Chaque fonction du CDataframe.c est créer à partir de l'appel d'une de ces fonctions
 
-
 #include <stdio.h>
 #include <malloc.h>
 #include "column.h"
