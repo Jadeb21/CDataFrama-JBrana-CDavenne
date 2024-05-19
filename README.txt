@@ -58,4 +58,5 @@ La partie la plus dur du projet était justement le cdataframe.
 -Ce que nous avons traités :
 
 Nous avons essayer de faire toute la partie 1 et que celle-ci focntionne correctement (meme s'il y a des erreurs).
-Egalement nous avons commencer le début de la partie 2 mais il est masqué avec (//).
+Egalement nous avons commencer la partie 2 mais il est masqué avec (//) car nous n'avons pas pu le connecter au cdataframe (sinon le programme s'arretait)
+Nous avons donc préféré montrer qu'il fonctionnait bien sans le cdataframe, en soutenance.
