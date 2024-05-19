@@ -54,4 +54,3 @@ Pour la 5, si vous avez ajouter une colonne juste avant (1) , son nom prendra ce
 Tout d'abord, nous n'avons pas bien compris le sujet et avons du recommencer toute la partie CDataframe.c.
 A cause de cette erreur nous n'avons pas pu avancer beaucoup dans le projet.
 La partie la plus dur du projet était justement le cdataframe.
-La taille physique et logique, je me trompais à chaque fois et le programme était faux.
