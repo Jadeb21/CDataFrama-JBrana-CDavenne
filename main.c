@@ -1,10 +1,12 @@
+//Projet CDataframe
+//Jade Brana et Clément Davenne
+//Ce fichier sert à l'interface utilisateur, il va permettre de faire fonctionner les fonctions que nous avons créée
+//Il comporte toutes les fonctions créée dans le fichier CDataframe.c et initialiser dans le CDataframe.h
+
 #include <stdio.h>
 #include "column.h"
 #include "CDataframe.h"
 #include <stdlib.h>
-
-//Ce fichier sert à l'interface utilisateur, il va permettre de faire fonctionner les fonctions que nous avons créée
-//Il comporte toutes les fonctions créée dans le fichier CDataframe.c et initialiser dans le CDataframe.h
 
 int main() {
     //Initialisation du CDataframe vide

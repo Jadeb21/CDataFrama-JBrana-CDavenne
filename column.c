@@ -1,12 +1,14 @@
-//
-// Created by jadeb on 17/05/2024.
-//
+//Projet CDataframe
+//Jade Brana et Clément Davenne
+//Ce fichier comporte l'ensemple des fonctions pour les colonnes que contient notre CDataframe
+//C'est grace à ce fichier que notre cdataframe peut contenir différentes colonne
+//Chaque fonction du CDataframe.c est créer à partir de l'appel d'une de ces fonctions
+
+
 #include <stdio.h>
 #include <malloc.h>
 #include "column.h"
 #define MALLOC_SIZE 256
-
-
 
 //création de colonne
 COLUMN *create_column(char* title) {

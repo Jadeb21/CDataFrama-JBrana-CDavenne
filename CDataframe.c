@@ -1,6 +1,9 @@
-//
-// Created by jadeb on 17/05/2024.
-//
+//Projet CDataframe
+//Jade Brana et Clément Davenne
+//Ce fichier est rempli de fonction qui servent pour le main
+//Il permet notamment la création de notre CDataframe et toutes les fonctions présentes dedans se retrouve dans le main
+//Chaque fonction comporte des sous_fonctions (du fichier column.c) car c'est à partir de celle-ci que nous créaons un cdataframe
+
 #include <malloc.h>
 #include "CDataframe.h"
 #include "column.h"
@@ -9,11 +12,11 @@
 
 //Initialisation du cdataframe vide
 CDATAFRAME *create_cdataframe(){
-    CDATAFRAME *cdata = (CDATAFRAME*)malloc(sizeof(COLUMN));
-    cdata->tp=0;
-    cdata->tl=0;
-    cdata->tab = NULL;
-    return cdata;
+    CDATAFRAME *cdata = (CDATAFRAME*)malloc(sizeof(COLUMN)); //Création du maillon cdata
+    cdata->tp=0; //Taille physique
+    cdata->tl=0; //Taille logique
+    cdata->tab = NULL; //Tableau de donnée
+    return cdata; //Retourne le cdata correspondant au cdataframe
 
 }
 
@@ -116,28 +119,28 @@ void hardware_cdataframe(CDATAFRAME* cdata) {
 }
 
 //Ajout d'une colonne
-void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
+void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) { //Ici pas de return car nous créons juste une colonne que nous ajoutons au cdataframe
     if (cdata->tp == cdata->tl) {
         cdata->tp += REALLOC_SIZE;
-        cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
+        cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN)); //Reallocation de mémoire pour la nouvelle colonne
     }
     cdata->tab[cdata->tl].title = strdup(col->title); //Permet de garder en mémoire le nom de la colonne ajouter
-    cdata->tab[cdata->tl++] = *col;
+    cdata->tab[cdata->tl++] = *col; //Nouvelle colonne
 }
 
 //Fonction affiche tout le cdataframe
-void print_cdataframe(CDATAFRAME* cdata){
-    for (int i=0; i<cdata->tl; i++){
+void print_cdataframe(CDATAFRAME* cdata){ //Ici pas de return car aucune nous n'attendons pas à recevoir une valeur
+    for (int i=0; i<cdata->tl; i++){ //Parcours du cdataframe
         print_col(&cdata->tab[i]); //Utilisation du print_col initialisé dans le fichier column.c
     }
 }
 
 //Fonction affiche les lignes selon votre choix, du cdataframe
 void print_row(CDATAFRAME* cdata, int row1, int row2){
-    for (int i=0; i<cdata->tl; i++)
+    for (int i=0; i<cdata->tl; i++) //Parcours le cdataframe
     {
         printf("ligne %d:\n", row1+i);
-        for (int j=row1-1; j<row2; j++)
+        for (int j=row1-1; j<row2; j++) //Parcours les lignes du cdataframe
         {
             COLUMN *col = &cdata->tab[j];
             printf("%d ", col->tab[i]);
@@ -147,9 +150,9 @@ void print_row(CDATAFRAME* cdata, int row1, int row2){
 }
 
 //Fonction permettant d'afficher les colonnes choisis du cdataframe
-void print_column(CDATAFRAME* cdata, int col1, int col2)
+void print_column(CDATAFRAME* cdata, int col1, int col2) //Pas de return car nous demandons un affichage et pas une valeur
 {
-    for (int i=col1-1; i<col2; i++)
+    for (int i=col1-1; i<col2; i++) //parcours des colonnes
     {
         printf("colonne %d:\n", col1+i);
         COLUMN *col = &cdata->tab[i];
@@ -239,43 +242,46 @@ void set_value_cdataframe(CDATAFRAME* cdata, int row, int col, int value) {
 }
 
 //Renvoie le nom des colonnes
-void print_column_names_cdataframe(CDATAFRAME* cdata) {
-    for (int i = 0; i < cdata->tl; ++i) {
-        printf("%s\n", cdata->tab[i].title);
+void print_column_names_cdataframe(CDATAFRAME* cdata) { //pas de return car nous demandons un affichage et pas une valeur
+    for (int i = 0; i < cdata->tl; ++i) { //parcours du tableau (cdataframe)
+        printf("%s\n", cdata->tab[i].title); //renvoie les titres des colonnes
     }
 }
 
 //Compte le nombre de colonne utiliser
-int get_row_count(CDATAFRAME *cdata) {
-    return cdata->tl;
+int get_row_count(CDATAFRAME *cdata) { //Nous demandons une valeur qu'il doit trouver dans le programme
+    return cdata->tl; //Renvoie la taille logique
 }
 
 //Montre toute la mémoire
-int get_column_count(CDATAFRAME *cdata) {
-    return cdata->tp;
+int get_column_count(CDATAFRAME *cdata) { //Nous demandons une valeur qu'il doit trouver dans le programme
+    return cdata->tp; //renvoie la taille physique
 }
 
 //compte le nombre de valeur egale à une valeur donner
-int count_cells_equal_to(CDATAFRAME* cdata, int x) {
+int count_cells_equal_to(CDATAFRAME* cdata, int x) { //Nous retournerons une valeur ici car nous cherchons un nombre de valeur égales
     int count = 0;
-    for (int i = 0; i < cdata->tl; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) { //Parcours du tableau pour trouver le nombre de valeurs égales à celle-ci
         count += equal_value(&(cdata->tab[i]), x); //Utilisation de equal_value (nous aurions pu utiliser count_occurrence) initialiser en column.h
     }
-    return count;
+    return count; //Retourne le nombre de valeur égales
 }
-int count_cells_greater_than(CDATAFRAME* cdata, int x) {
+int count_cells_greater_than(CDATAFRAME* cdata, int x) { //Nous retournerons une valeur ici car nous cherchons un nombre de valeur supérieurs
     int count = 0;
-    for (int i = 0; i < cdata->tl; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) { //Parcours du tableau pour trouver le nombre de valeurs supérieurs à celle-ci
         count += more_value(&(cdata->tab[i]), x);//Utilisation de more_value initialiser en column.h
     }
-    return count;
+    return count; //Retourne le nombre de valeur supérieurs
 }
-int count_cells_less_than(CDATAFRAME* cdata, int x) {
+
+//Fonction permettant l'affichage des valeurs inférieurs à une valeur x donnée
+int count_cells_less_than(CDATAFRAME* cdata, int x) { //Nous retournerons une valeur ici car nous cherchons un nombre de valeur inférieurs
     int count = 0;
-    for (int i = 0; i < cdata->tl; ++i) {
+    for (int i = 0; i < cdata->tl; ++i) { //Parcours du tableau pour trouver le nombre de valeurs inférieurs à celle-ci
         count += less_value(&(cdata->tab[i]), x);//Utilisation de less_value initialiser en column.h
+        //Compteur permettant de compter le nombre de valeur supérieur à la valeur donnée
     }
-    return count;
+    return count; //Retourne le nombre de valeur inférieurs
 }
 
 //Menu du cdataframe
@@ -298,6 +304,7 @@ void print_menu() {
     printf("Choisissez une option:\n");
 }
 
+//Fonction du menu de bienvenue
 void welcome(){
     printf("Bonjour et bienvenue dans le CDataframe !\n");
     printf("Merci de choisir une option:\n");
