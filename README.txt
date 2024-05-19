@@ -26,7 +26,7 @@ D'autres fonctionnalités existes comme l'ajout et la suppression de ligne ou de
 - Instructions d'exécution de notre code :
 
 Appuyer sur le bouton vert (run) en haut.
-Un menu se déroule vous demandant si vous préférez saisir manuellement ou si vous préférez quelque chose de déjà rempli.
+Un menu se déroule vous demandant si vous préférez un cdataframe vide à remplir après ou si vous préférez quelque chose de déjà rempli.
 Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pour que vous puissiez faire ce que vous souhaitez.
 - L'ajout d'une ligne (2) ou d'une colonne (1)
 - La suppression d'une ligne (3) ou d'une colonne (4)
