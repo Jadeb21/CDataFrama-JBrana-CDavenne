@@ -114,11 +114,11 @@ int equal_value(COLUMN *col, int value) {
 COLUMN *create_column(ENUM_TYPE type, char *title) {
     COLUMN* col = (COLUMN*)malloc(sizeof(COLUMN));
     col->title = strdup(title); // Allouer et copier le titre
-    col->size = 0;
-    col->max_size = 256;
-    col->column_type = type;
-    col->data = (COL_TYPE**)malloc(col->max_size * sizeof(COL_TYPE*));
-    col->index = (unsigned long long int*)malloc(col->max_size * sizeof(unsigned long long int));
+    col->size = 0; //taille logique
+    col->max_size = 256; //Taille physique
+    col->column_type = type; //Le type de colonne
+    col->data = (COL_TYPE**)malloc(col->max_size * sizeof(COL_TYPE*)); //Initialisation du tableau
+    col->index = (unsigned long long int*)malloc(col->max_size * sizeof(unsigned long long int)); //Initialisation de l'index
     return col;
 }
 
@@ -128,13 +128,13 @@ int insert_value(COLUMN *col, void *value) {
         col->data = (COL_TYPE**)realloc(col->data, col->max_size * sizeof(COL_TYPE*));
         col->index = (unsigned long long int*)realloc(col->index, col->max_size * sizeof(unsigned long long int));
     }
-
+    //Initialisation des différents type de colonne
     COL_TYPE* new_value = (COL_TYPE*)malloc(sizeof(COL_TYPE));
     switch (col->column_type) {
         case UINT:
             new_value->uint_value = *(unsigned int*)value;
             break;
-        case INT:
+        case INT: //Entier
             new_value->int_value = *(int*)value;
             break;
         case CHAR:
