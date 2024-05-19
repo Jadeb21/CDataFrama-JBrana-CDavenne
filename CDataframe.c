@@ -142,8 +142,8 @@ void print_row(CDATAFRAME* cdata, int row1, int row2){
         printf("ligne %d:\n", row1+i);
         for (int j=row1-1; j<row2; j++) //Parcours les lignes du cdataframe
         {
-            COLUMN *col = &cdata->tab[j];
-            printf("%d ", col->tab[i]);
+            COLUMN *col = &cdata->tab[j]; //Mise en place de la fonction COLUMN *col pour ramener les lignes et récupere celle demander
+            printf("%d ", col->tab[i]); //Affichage des colonnes demandé
         }
         printf("\n");
     }
@@ -155,10 +155,10 @@ void print_column(CDATAFRAME* cdata, int col1, int col2) //Pas de return car nou
     for (int i=col1-1; i<col2; i++) //parcours des colonnes
     {
         printf("colonne %d:\n", col1+i);
-        COLUMN *col = &cdata->tab[i];
+        COLUMN *col = &cdata->tab[i]; //fonction pour récupérer les colonnes demandés
         for (int j=0; j<cdata->tl; j++)
         {
-            printf("%d ", col->tab[j]);
+            printf("%d ", col->tab[j]); //Affichage des lignes demandés
         }
         printf("\n");
     }
@@ -167,11 +167,11 @@ void print_column(CDATAFRAME* cdata, int col1, int col2) //Pas de return car nou
 // Fonction pour ajouter une ligne de valeurs au CDataframe
 void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
     if (cdata->tp == 0 || cdata->tl >= cdata->tp) {
-        cdata->tp += REALLOC_SIZE;
+        cdata->tp += REALLOC_SIZE; //Réallocation pour une nouvelle ligne
         cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
     }
-    for (int i = 0; i < cdata->tl; ++i) {
-        insert_value(&(cdata->tab[i]), values[i]);
+    for (int i = 0; i < cdata->tl; ++i) { //Parcours du tableau
+        insert_value(&(cdata->tab[i]), values[i]); //Insertion des valeurs qu'on souhaite
     }
     cdata->tl++;
 }
@@ -181,12 +181,12 @@ void delete_row_cdataframe(CDATAFRAME* cdata, int row) {
     if (row < 0 || row >= cdata->tl)
         return;
     for (int i = 0; i < cdata->tl; ++i) {
-        for (int j = row; j < cdata->tab[i].tl - 1; ++j) {
+        for (int j = row; j < cdata->tab[i].tl - 1; ++j) { //Deplace les lignes vers la gauche
             cdata->tab[i].tab[j] = cdata->tab[i].tab[j + 1];
         }
         cdata->tab[i].tl--;
     }
-    cdata->tl--;
+    cdata->tl--; //Décrémentation
 }
 
 //Suppression d'une colonne
@@ -194,6 +194,7 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     if (col_index < 0 || col_index >= cdata->tp) {
         return;
     }
+    //Supprime la colonnes demandés
     delete_column((COLUMN **) &(cdata->tab[col_index]));
 
     // Déplacer les colonnes suivantes vers la gauche
@@ -202,7 +203,7 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
     }
 
     // Décrémenter la taille logique
-    cdata->tp--;
+    cdata->tl--;
 }
 
 
@@ -211,7 +212,7 @@ void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char *new_title)
     if (col_index < 0 || col_index >= cdata->tl)
         free(cdata->tab[col_index].title);
 
-    cdata->tab[col_index].title = strdup(new_title);
+    cdata->tab[col_index].title = strdup(new_title); //Garde le nouveau nom pour la nouvelle colonne
 
 }
 

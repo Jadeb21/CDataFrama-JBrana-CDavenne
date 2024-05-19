@@ -65,3 +65,6 @@
 4	200	7378263011267505	CMakeFiles/projet2_0.dir/main.c.obj	60674cfdc2e7e1d
 11	230	7378263011558829	CMakeFiles/projet2_0.dir/CDataframe.c.obj	1082f539f62a5f73
 230	384	7378263013045770	projet2_0.exe	7ae0eaa97816dfe8
+21	303	7378314975578049	CMakeFiles/projet2_0.dir/column.c.obj	2d0baeb824501c54
+8	713	7378314979615102	CMakeFiles/projet2_0.dir/CDataframe.c.obj	1082f539f62a5f73
+713	1218	7378314984468994	projet2_0.exe	7ae0eaa97816dfe8

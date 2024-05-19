@@ -20,7 +20,7 @@ COLUMN *create_column(char* title) {
     return col;
 }
 
-//Fonction permettant afficher les colonnes avec le numéro de colonne et ce qu'elle contient
+//Fonction permettant d'afficher les colonnes avec le numéro de colonne et ce qu'elle contient
 int insert_value(COLUMN* column, int value) {
     if (column->tab == NULL || column->tl >= column->tp) {
 
