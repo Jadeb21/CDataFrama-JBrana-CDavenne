@@ -169,6 +169,7 @@ int main() {
 //Acceder et changer la valeur à partir d'une saisie de ligne et colonne voulue
                 int row, col;
                 int new_value;
+                printf("ATTENTION, LA COLONNE 1 COMMENCE A 0 !\n");
                 printf("Entrez le numero de la ligne :\n");
                 scanf("%d", &row);
                 printf("Entrez le numero de la colonne :\n");
@@ -179,7 +180,7 @@ int main() {
                     printf("Entrez la nouvelle valeur :\n");
                     scanf("%d", &new_value);
                     set_value_cdataframe(cdata, row, col, new_value); //Remplace la valeur précédente par la nouvelle
-                    printf("Nouvelle valeur à la ligne %d, colonne %d : %d\n", row, col, get_value_cdataframe(cdata, row, col));
+                    printf("Nouvelle valeur a la ligne %d, colonne %d : %d\n", row, col, get_value_cdataframe(cdata, row, col));
                 } else {
                     printf("Indice de ligne ou de colonne invalide.\n");
                 }
@@ -188,7 +189,7 @@ int main() {
             case 12: {
 //Comparaison lors de la saisie d'une valeur (supérieur/inférieur/égale)
                 int x;
-                printf("Entrez une valeur pour les comparaisons : ");
+                printf("Entrez une valeur pour les comparaisons :\n");
                 scanf("%d", &x);
                 int equal_count = count_cells_equal_to(cdata, x); //Nous donne les valeurs égales à x dans le cdataframe
                 printf("Nombre de cellules egales a %d : %d\n", x, equal_count);
