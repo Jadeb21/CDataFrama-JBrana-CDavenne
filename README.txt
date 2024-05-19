@@ -19,7 +19,7 @@ Comme il n'exite pas d'équivalent en langage C, nous avons réalisé ce projet 
 
 - Fonctionnalités principales de notre application :
 
-Vous pouvez choisir entre un CDataframe déjà rempli ou vous pouvez le remplir vous meme.
+Vous pouvez choisir entre un CDataframe déjà rempli ou vide.
 Ensuite vous pourrez choisir entre afficher tout le cdataframe, afficher certaine ligne ou bien certaine colonne du CDataframe
 D'autres fonctionnalités existes comme l'ajout et la suppression de ligne ou de colonne.
 
@@ -40,13 +40,14 @@ Ensuite nous vous avons concocter tout-un-tas de fonctionnalité à utilisé pou
 - Renvoyer le nom de toutes les colonnes presentes dans votre cdataframe (13)
 - Quitter votre cdataframe (14)
 
-Des consignes données lors de l'exécution sont donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place
-
-Merci de bien mettre la console en pleine écran si vous voulez voire les résultats s'afficher ( car comme le menu est assez conséquent, il cache le reste)
+Des consignes lors de l'exécution sont donnée mais pour ceux qui ne veulent pas les respecter, des saisies sécurisés ont été mises en place.
+Vous pouvez remplir en dur en vous referant à la fonction hardware_cdataframe présente dans le fichier (CDataframe.c) cela sécurisera vos saisies de titre (regarder erreur du projet, en bas de la page).
+Merci de bien mettre la console en pleine écran si vous voulez voire les résultats s'afficher (car comme le menu est assez conséquent, il cache le reste).
 
 -Erreur du projet :
 
 Pour la 8 (et 9), si vous dépassez le nombre de ligne (colonne), le programme s'arrete (s'il n'y a pas plus de 5 lignes, ne mettez pas 6)
+Pour la 5, si vous avez ajouter une colonne juste avant (1) , son nom prendra celui que vous venez d'entrer aussi
 
 -Difficultés :
 

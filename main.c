@@ -3,9 +3,31 @@
 #include "CDataframe.h"
 #include <stdlib.h>
 
+
 int main() {
     CDATAFRAME *cdata = create_cdataframe();
-    hardware_cdataframe(cdata);
+    int begin = 1;
+    while (begin){
+        welcome();
+        int choix;
+        scanf("%d", &choix);
+        switch (choix){
+            case 1:
+                hardware_cdataframe(cdata);
+                begin =0;
+                break;
+            case 2:
+                begin=0;
+                break;
+            default: {
+                if (scanf("%d", &choix) != 1 || choix <= 0) {
+                    printf("Entree invalide.\n");
+                    while (getchar() != '\n'); // getchar permet de lire un caractère lors d'une saisie clavier, il sécurise notre programmesi l'utilisateur décide de saisir un caractère au lieu d'un entier
+                    break;
+                }
+            }
+        }
+    }
     int running = 1;
     while (running) {
         print_menu();

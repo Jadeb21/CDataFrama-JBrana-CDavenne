@@ -6,6 +6,8 @@
 #include "column.h"
 #define MALLOC_SIZE 256
 
+
+
 //création de colonne
 COLUMN *create_column(char* title) {
     COLUMN *col = (COLUMN *)malloc(sizeof(COLUMN));
@@ -103,3 +105,6 @@ int equal_value(COLUMN *col, int value) {
     }
     return count;
 }
+
+
+

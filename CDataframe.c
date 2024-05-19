@@ -18,6 +18,7 @@ CDATAFRAME *create_cdataframe(){
 }
 
 //Initialisation du cdataframe en saisie utilisateur
+//Fonction non utilisé dans notre cdataframe car beaucoup de bug
 void input_user(CDATAFRAME* cdata, COLUMN* col){
     char title[100];
     int value;
@@ -30,7 +31,7 @@ void input_user(CDATAFRAME* cdata, COLUMN* col){
             printf("Entrer la valeur de la colonne \"%s\" (Saisir -1 quand vous avez fini):\n", title);
             if (scanf("%d", &value) != 1) { // Vérifie si la saisie est un entier
                 printf("Entrer invalide, veuillez saisir un autre chiffre.\n");
-                while (getchar() != '\n'); // Vide le tampon d'entrée
+                while (getchar() != '\n');
                 continue;
             }
 
@@ -50,6 +51,14 @@ void hardware_cdataframe(CDATAFRAME* cdata) {
     // Création de colonnes avec des valeurs initiales
     COLUMN *col1 = create_column("Colonne 1");
     COLUMN *col2 = create_column("Colonne 2");
+    COLUMN *col3 = create_column("Colonne 3");
+    COLUMN *col4 = create_column("Colonne 4");
+    COLUMN *col5 = create_column("Colonne 5");
+    COLUMN *col6 = create_column("Colonne 6");
+    COLUMN *col7 = create_column("Colonne 7");
+    COLUMN *col8 = create_column("Colonne 8");
+    COLUMN *col9 = create_column("Colonne 9");
+    COLUMN *col10 = create_column("Colonne 10");
 
     insert_value(col1, 10);
     insert_value(col1, 20);
@@ -59,13 +68,51 @@ void hardware_cdataframe(CDATAFRAME* cdata) {
     insert_value(col2, 50);
     insert_value(col2, 60);
 
+    insert_value(col3, 70);
+    insert_value(col3, 80);
+    insert_value(col3, 90);
+
+    insert_value(col4, 100);
+    insert_value(col4, 110);
+    insert_value(col4, 120);
+
+    insert_value(col5, 130);
+    insert_value(col5, 140);
+    insert_value(col5, 150);
+
+    insert_value(col6, 160);
+    insert_value(col6, 170);
+    insert_value(col6, 180);
+
+    insert_value(col7, 190);
+    insert_value(col7, 200);
+    insert_value(col7, 210);
+
+    insert_value(col8, 220);
+    insert_value(col8, 230);
+    insert_value(col8, 240);
+
+    insert_value(col9, 250);
+    insert_value(col9, 260);
+    insert_value(col9, 270);
+
+    insert_value(col10, 280);
+    insert_value(col10, 290);
+    insert_value(col10, 300);
+
+
     // Ajout des colonnes au CDATAFRAME
     add_column_cdataframe(cdata, col1);
     add_column_cdataframe(cdata, col2);
+    add_column_cdataframe(cdata, col3);
+    add_column_cdataframe(cdata, col4);
+    add_column_cdataframe(cdata, col5);
+    add_column_cdataframe(cdata, col6);
+    add_column_cdataframe(cdata, col7);
+    add_column_cdataframe(cdata, col8);
+    add_column_cdataframe(cdata, col9);
+    add_column_cdataframe(cdata, col10);
 
-    // Ajout de lignes avec des valeurs initiales
-    int new_row_values[] = {70, 80};
-    add_row_cdataframe(cdata, new_row_values);
 }
 
 //Ajout d'une colonne
@@ -74,9 +121,9 @@ void add_column_cdataframe(CDATAFRAME* cdata, COLUMN* col) {
         cdata->tp += REALLOC_SIZE;
         cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
     }
+    cdata->tab[cdata->tl].title = strdup(col->title); //Permet de garder en mémoire le nom de la colonne ajouter
     cdata->tab[cdata->tl++] = *col;
 }
-
 
 //Fonction affiche tout le cdataframe
 void print_cdataframe(CDATAFRAME* cdata){
@@ -117,11 +164,9 @@ void print_colonne(CDATAFRAME* cdata, int col1, int col2)
 // Fonction pour ajouter une ligne de valeurs au CDataframe
 void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
     if (cdata->tp == 0 || cdata->tl >= cdata->tp) {
-        // Réallocation si nécessaire
         cdata->tp += REALLOC_SIZE;
         cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
     }
-
     for (int i = 0; i < cdata->tl; ++i) {
         insert_value(&(cdata->tab[i]), values[i]);
     }
@@ -159,10 +204,12 @@ void delete_column_cdataframe(CDATAFRAME* cdata, int col_index) {
 
 
 //Renommer une colonne du cdataframe
-void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char* new_title) {
-    if (col_index < 0 || col_index >= cdata->tp)
+void rename_column_cdataframe(CDATAFRAME* cdata, int col_index, char *new_title) {
+    if (col_index < 0 || col_index >= cdata->tl)
         free(cdata->tab[col_index].title);
+
     cdata->tab[col_index].title = strdup(new_title);
+
 }
 
 //chercher s'il existe une valeur donnée
@@ -255,7 +302,6 @@ void welcome(){
     printf("Bonjour et bienvenue dans le CDataframe !\n");
     printf("Merci de choisir une option:\n");
     printf("1. Prerempli\n");
-    printf("2. Saisie utilisateur\n");
-    printf("3. Quitter\n");
+    printf("2. Vide (a remplir au fur et a mesure)\n");
     printf("Comment voulez-vous initialiser votre CDataframe ?\n");
 }
