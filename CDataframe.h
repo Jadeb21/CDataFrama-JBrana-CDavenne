@@ -37,7 +37,8 @@ int count_cells_less_than(CDATAFRAME* cdata, int x);
 void print_menu();
 void welcome();
 
-void input_user(CDATAFRAME* cdata, COLUMN* col); //Nous avons essayer de créer une saisie utilisateur mais celle-ci fait buggé notre programme donc nous ne l'utilisons pas
 
+//Nous avons essayer de créer une saisie utilisateur mais celle-ci fait buggé notre programme donc nous ne l'utilisons pas
+// void input_user(CDATAFRAME* cdata, COLUMN* col);
 
 #endif //PROJET2_0_CDATAFRAME_H
