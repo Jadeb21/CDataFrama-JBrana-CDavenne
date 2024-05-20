@@ -29,7 +29,7 @@ int main() {
             default: {
                 //Erreur de saisie, permet d'éviter que le programme s'arrete
                 if (scanf("%d", &choix) != 1 || choix <= 0) {
-                    printf("Entree invalide.\n");
+                    printf("Merci de choisir une option entre 1 et 2.\n");
                     while (getchar() != '\n'); // getchar permet de lire un caractère lors d'une saisie clavier, il sécurise notre programmesi l'utilisateur décide de saisir un caractère au lieu d'un entier
                     break;
                 }
@@ -212,7 +212,7 @@ int main() {
             }
             default: {
                 if (scanf("%d", &choice) != 1 || choice <= 0) {
-                    printf("Entree invalide.\n");
+                    printf("Merci de choisir une option entre 1 et 14.\n");
                     while (getchar() != '\n'); // getchar permet de lire un caractère lors d'une saisie clavier, il sécurise notre programmesi l'utilisateur décide de saisir un caractère au lieu d'un entier
                     break;
                 }
