@@ -60,4 +60,6 @@ int more_value(COLUMN *col, int value);
 int less_value(COLUMN *col, int value);
 int equal_value(COLUMN *col, int value);
  */
+
+
 #endif //PROJET2_0_COLUMN_H
