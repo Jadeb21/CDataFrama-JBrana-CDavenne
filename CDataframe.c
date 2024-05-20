@@ -286,34 +286,3 @@ void welcome(){
     printf("Comment voulez-vous initialiser votre CDataframe ?\n");
 }
 
-/* Fonction input_user mais ne fonctionne pas
-
-//Initialisation du cdataframe en saisie utilisateur
-//Fonction non utilisé dans notre cdataframe car beaucoup de bug
-void input_user(CDATAFRAME* cdata, COLUMN* col){
-    char title[50];
-    int value;
-    int choix;
-    do {
-        printf("Entrer le titre de la colonne:\n");
-        scanf("%50s", title); //permet de saisir 50 caractères maximum, correspondant au mot le plus long du monde en français
-        COLUMN* tab = create_column(title);
-        do {
-            printf("Entrer la valeur de la colonne \"%s\" (Saisir -1 quand vous avez fini):\n", title);
-            if (scanf("%d", &value) != 1) { // Vérifie si la saisie est un entier
-                printf("Entrer invalide, veuillez saisir un autre chiffre.\n");
-                while (getchar() != '\n');
-                continue;
-            }
-
-            if (value != -1) {
-                insert_value(tab, value);
-            }
-        } while (value != -1);
-    }while(choix == 'o' || choix == 'O');
-
-    printf("Voulez-vous entrer une autre valeur ?[O/N]\n");
-    scanf("%c ", &choix);
-
-}
-*/
