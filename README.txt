@@ -47,7 +47,7 @@ Merci de bien mettre la console en pleine écran si vous voulez voire les résul
 -Erreur du projet :
 
 Pour la 8 (et 9), si vous dépassez le nombre de ligne (colonne), le programme s'arrete (s'il n'y a pas plus de 5 lignes, ne mettez pas 6)
-Pour la 5, si vous avez ajouter une colonne juste avant (1) , son nom prendra celui que vous venez d'entrer aussi
+Pour la 5, si vous avez ajouter une colonne juste avant (1), son nom prendra celui que vous venez d'entrer aussi
 
 -Difficultés :
 
