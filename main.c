@@ -45,7 +45,7 @@ int main() {
 
         switch (choice) {
             case 1: {
-// Ajouter une colonne
+                // Ajouter une colonne
                 char title[100];
                 printf("Entrez le titre de la colonne:\n");
                 scanf("%s", title);
@@ -55,7 +55,7 @@ int main() {
                 break;
             }
             case 2: {
-// Ajouter une ligne
+                    // Ajouter une ligne
                 int num_cols = get_row_count(cdata); //Ajoute le nombre de ligne en fonction du nombre de colonne
                 if (num_cols == 0) {
                     printf("Aucune colonne n'existe. Ajoutez d'abord des colonnes.\n");
@@ -77,7 +77,7 @@ int main() {
                 break;
             }
             case 3: {
-// Supprimer une ligne
+                // Supprimer une ligne
                 int row;
                 printf("Entrez le numero de la ligne a supprimer:\n");
                 if (scanf("%d", &row) != 1 || row <= 0) { //Permet de choisir la ligne à renommer
@@ -90,7 +90,7 @@ int main() {
                 break;
             }
             case 4: {
-// Supprimer une colonne
+                // Supprimer une colonne
                 int col;
                 printf("Entrez le numero de la colonne a supprimer:\n");
                 if (scanf("%d", &col) != 1 || col <= 0) { //Permet de choisir la colonne à supprimer
@@ -103,7 +103,7 @@ int main() {
                 break;
             }
             case 5: {
-// Renommer une colonne
+                // Renommer une colonne
                 int col;
                 char new_title[50];
                 printf("Entrez le numero de la colonne a renommer:\n");
@@ -119,13 +119,13 @@ int main() {
                 break;
             }
             case 6: {
-// Afficher le dataframe
+                // Afficher le dataframe
                 printf("Dataframe actuel:\n");
                 print_cdataframe(cdata); //Fonction permettant d'afficher la totalité de notre cdataframe
                 break;
             }
             case 7: {
-// Vérifier l'existence d'une valeur
+                // Vérifier l'existence d'une valeur
                 int value;
                 printf("Entrez la valeur a rechercher:\n");
                 if (scanf("%d", &value) != 1) {
@@ -138,7 +138,7 @@ int main() {
                 break;
             }
             case 8: {
-//Affiche de la première à la ligne que l'on souhaite
+                //Affiche de la première à la ligne que l'on souhaite
                 int row1, row2;
                 printf("Entrez le numero de la premiere colonne:\n");
                 scanf("%d", &row1);
@@ -148,7 +148,7 @@ int main() {
                 break;
             }
             case 9:{
-//Affiche de la première à la colonne que l'on souhaite
+                //Affiche de la première à la colonne que l'on souhaite
                 int col1, col2;
                 printf("Entrez le numero de la premiere colonne:\n");
                 scanf("%d", &col1);
@@ -158,7 +158,7 @@ int main() {
                 break;
             }
             case 10:{
-//Affichage de la mémoire
+                //Affichage de la mémoire
                 int row_count = get_row_count(cdata); //Renvoie la taille logique
                 int column_count = get_column_count(cdata); //Renvoie la taille physique
                 printf("Nombre de lignes (deja rempli) : %d\n", row_count);
@@ -166,7 +166,7 @@ int main() {
                 break;
             }
             case 11: {
-//Acceder et changer la valeur à partir d'une saisie de ligne et colonne voulue
+                //Acceder et changer la valeur à partir d'une saisie de ligne et colonne voulue
                 int row, col;
                 int new_value;
                 printf("ATTENTION, LA COLONNE 1 COMMENCE A 0 !\n");
@@ -187,7 +187,7 @@ int main() {
                 break;
             }
             case 12: {
-//Comparaison lors de la saisie d'une valeur (supérieur/inférieur/égale)
+                //Comparaison lors de la saisie d'une valeur (supérieur/inférieur/égale)
                 int x;
                 printf("Entrez une valeur pour les comparaisons :\n");
                 scanf("%d", &x);
@@ -205,7 +205,7 @@ int main() {
                 break;
             }
             case 14: {
-// Quitter
+                // Quitter
                 running = 0; //Permet de quitter la boucle
                 printf("Au revoir!\n");
                 break;
