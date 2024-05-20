@@ -165,13 +165,13 @@ void print_column(CDATAFRAME* cdata, int col1, int col2) //Pas de return car nou
 }
 
 // Fonction pour ajouter une ligne de valeurs au CDataframe
-void add_row_cdataframe(CDATAFRAME* cdata, int* values) { //Pas de return car on ajoute simplement une ligne de valeur et qu'on ne renvoie pas de valeur
+void add_row_cdataframe(CDATAFRAME* cdata, int* values) {
     if (cdata->tp == 0 || cdata->tl >= cdata->tp) {
-        cdata->tp += REALLOC_SIZE; //Réallocation pour une nouvelle ligne
+        cdata->tp += REALLOC_SIZE;
         cdata->tab = realloc(cdata->tab, cdata->tp * sizeof(COLUMN));
     }
-    for (int i = 0; i < cdata->tl; ++i) { //Parcours du tableau
-        insert_value(&(cdata->tab[i]), values[i]); //Insertion des valeurs qu'on souhaite
+    for (int i = 0; i < cdata->tl; ++i) {
+        insert_value(&(cdata->tab[i]), values[i]);
     }
     cdata->tl++;
 }
