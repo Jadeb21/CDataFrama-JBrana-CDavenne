@@ -161,11 +161,6 @@ int insert_value(COLUMN *col, void *value) {
 }
 
 void print_col(COLUMN* col) {
-    if (col == NULL) {
-        printf("Column is NULL.\n");
-        return;
-    }
-
     printf("Titre de la colonne : %s\n", col->title);
     printf("Taille logique : %u\n", col->size);
     printf("Taille physique : %u\n", col->max_size);
