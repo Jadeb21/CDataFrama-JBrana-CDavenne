@@ -60,8 +60,11 @@ La partie la plus dur du projet était justement le cdataframe.
 Nous avons essayer de faire toute la partie 1 et que celle-ci focntionne correctement (meme s'il y a des erreurs).
 Egalement nous avons commencer la partie 2 mais il est masqué avec (/*) car nous n'avons pas pu le connecter au cdataframe (sinon le programme s'arretait)
 Nous avons donc préféré montrer qu'il fonctionnait bien sans le cdataframe, en soutenance.
+
+
+
 Si vous voulez le faire fonctionner aussi voici les instructions :
--Mettre le contenu des fichier cdataframe.c en (/*) en haut et en bas
--Faire de meme avec le fichier column (c et h) jusqu'à ce que vous voyez un programme grisé
--Retirer les (/*) en haut et en bas des programmes grisés
--Vous pouvez, en changeant le main par ceux qui est proposé en bas du main (programme grisé), voir le programme fonctionné
+-Mettre le contenu des fichier cdataframe.c en (/*) en haut et (*/) en bas.
+-Faire de meme avec le fichier column (c et h) jusqu'à ce que vous voyez un programme grisé --> (/*).
+-Retirer les (/*) en haut et (*/) en bas des programmes grisés.
+-Vous pouvez, en changeant le main par ceux qui sont proposés en bas du main (programme grisé), voir le programme fonctionné.
