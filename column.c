@@ -197,7 +197,7 @@ void print_col(COLUMN* col) {
                 printf("Structure\n");
                 break;
             default:
-                printf("Unknown data type\n");
+                printf("Type de donnée introuvable\n");
                 break;
         }
     }
@@ -216,7 +216,7 @@ void delete_column(COLUMN **col) {
                     free((*col)->data[i]->string_value);
                     break;
                 case STRUCTURE:
-                    // Si des structures spécifiques sont allouées, elles doivent être libérées ici
+                    free((*col)->data[i]->struct_value);
                     break;
                 default:
                     break;
